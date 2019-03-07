@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ContentProvidersPlayGround</string>
+    <string name="permission_error">Cannot Run the app without read contacts permission</string>
 </resources>
