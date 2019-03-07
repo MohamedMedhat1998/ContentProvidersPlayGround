@@ -18,8 +18,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val CONTACTS_PERMISSION_REQUEST_CODE = 5
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -75,5 +73,9 @@ class MainActivity : AppCompatActivity() {
             adapter.notifyDataSetChanged()
             Log.d("Observer", "works")
         })
+    }
+
+    companion object {
+        private const val CONTACTS_PERMISSION_REQUEST_CODE = 5
     }
 }
