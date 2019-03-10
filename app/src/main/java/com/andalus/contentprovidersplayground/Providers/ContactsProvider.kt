@@ -36,21 +36,21 @@ class ContactsProvider {
 
         override fun onPostExecute(result: Cursor?) {
             super.onPostExecute(result)
-            val contactsList = mutableListOf<Contact>()
-            if(result!=null){
-                Log.d("AsyncTask","result != null")
-                while (result.moveToNext()) {
-                    contactsList.add(
-                        Contact(
-                            result.getString(0),
-                            result.getString(1)
-                        )
-                    )
-                }
-            }
-            globalContactsList.value = contactsList
-            Log.d("AsyncTask","works")
-            Log.d("AsyncTask","data size ${contactsList.size}")
+            globalContactsList.value = result?.toContactsList()
         }
     }
 }
+
+fun Cursor.toContactsList(): MutableList<Contact> {
+    val contactsList = mutableListOf<Contact>()
+    while (this.moveToNext()) {
+        contactsList.add(
+            Contact(
+                this.getString(0),
+                this.getString(1)
+            )
+        )
+    }
+    return contactsList
+}
+
